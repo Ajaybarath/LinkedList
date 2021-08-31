@@ -9,6 +9,7 @@ public class MyLinkedList<K> {
 
 		MyLinkedList<Integer> addLinkedList = new MyLinkedList<>();
 		MyLinkedList<Integer> appendLinkedList = new MyLinkedList<>();
+		MyLinkedList<Integer> addInBetweenLinkedList = new MyLinkedList<>();
 
 		INode<Integer> node1 = new MyNode<>(56);
 		INode<Integer> node2 = new MyNode<>(30);
@@ -22,9 +23,15 @@ public class MyLinkedList<K> {
 		appendLinkedList.append(node2);
 		appendLinkedList.append(node3);
 		
+		addInBetweenLinkedList.add(node3);
+		addInBetweenLinkedList.add(node1);
+		addInBetweenLinkedList.addInBetween(node2);
+		
 		addLinkedList.printNode();
 		
 		appendLinkedList.printNode();
+		
+		addInBetweenLinkedList.printNode();
 		
 	}
 
@@ -52,6 +59,11 @@ public class MyLinkedList<K> {
 			tail = tail.getNext();
 		}
 	
+	}
+	
+	public void addInBetween(INode<K> newNode) {
+		newNode.setNext(head.getNext());
+		head.setNext(newNode);
 	}
 	
 	public void printNode() {
