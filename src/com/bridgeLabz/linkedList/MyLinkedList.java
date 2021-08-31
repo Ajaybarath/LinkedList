@@ -66,6 +66,11 @@ public class MyLinkedList<K> {
 		head.setNext(newNode);
 	}
 	
+	public void pop() {
+		head = head.getNext();
+	}
+	
+	
 	public void printNode() {
 		
 		INode<K> tempNode = head;
