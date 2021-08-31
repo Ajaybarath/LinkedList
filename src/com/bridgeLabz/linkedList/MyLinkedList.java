@@ -60,20 +60,20 @@ public class MyLinkedList<K> {
 	}
 
 	public void addInBetween(INode<K> newNode, INode<K> prevNode) {
-		
+
 		INode<K> tempNode = head;
 
 		while (tempNode != null) {
-			
+
 			if (tempNode.getKey().equals(prevNode.getKey())) {
 				INode nextNode = tempNode.getNext();
 				newNode.setNext(nextNode);
-				tempNode.setNext(newNode);				
+				tempNode.setNext(newNode);
 			}
-			
+
 			tempNode = tempNode.getNext();
 		}
-		
+
 	}
 
 	public void pop() {
@@ -99,14 +99,48 @@ public class MyLinkedList<K> {
 		INode<K> tempNode = head;
 
 		while (tempNode != null) {
-			
+
 			if (tempNode.getKey().equals(node.getKey()))
 				return true;
-			
+
 			tempNode = tempNode.getNext();
 		}
-		
+
 		return false;
+	}
+
+	public int size() {
+
+		int size = 0;
+
+		INode<K> tempNode = head;
+
+		while (tempNode != null) {
+
+			tempNode = tempNode.getNext();
+			size++;
+		}
+
+		return size;
+
+	}
+
+	public void deleteNode(INode node) {
+
+		if (tail.equals(node)) {
+			popLast();
+		} else {
+			INode<K> tempNode = head;
+
+			while (tempNode.getNext() != node) {
+				tempNode = tempNode.getNext();
+			}
+
+			INode nextNode = tempNode.getNext().getNext();
+
+			tempNode.setNext(nextNode);
+		}
+
 	}
 
 	public void printNode() {

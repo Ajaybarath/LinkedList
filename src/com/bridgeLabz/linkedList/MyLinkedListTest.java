@@ -168,4 +168,39 @@ public class MyLinkedListTest {
 		Assert.assertTrue(result);
 		
 	}
+	
+	
+	@Test
+	public void deleteAndGetSizeLinkedListTest() {
+		
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+		
+		INode<Integer> node1 = new MyNode<>(56);
+		INode<Integer> node2 = new MyNode<>(30);
+		INode<Integer> node3 = new MyNode<>(70);
+		INode<Integer> node4 = new MyNode<>(40);
+
+		
+		myLinkedList.append(node1);
+		myLinkedList.append(node2);
+		myLinkedList.append(node3);
+		
+		myLinkedList.addInBetween(node4, node2);
+		
+		myLinkedList.printNode();
+
+		System.out.println(myLinkedList.size());
+
+		
+		myLinkedList.deleteNode(node4);
+		
+		myLinkedList.printNode();
+		
+		System.out.println(myLinkedList.size());
+		
+		boolean result = myLinkedList.size() == 3;
+						
+		Assert.assertTrue(result);
+		
+	}
 }
