@@ -70,6 +70,21 @@ public class MyLinkedList<K> {
 		head = head.getNext();
 	}
 	
+	public void popLast() {
+		
+		INode<K> tempNode = head;
+		
+		while (tempNode.getNext().getNext() != null) {
+			tempNode = tempNode.getNext();
+		}
+		
+		tempNode.setNext(null);
+		
+		tail = tempNode;
+		
+		
+	}
+ 	
 	
 	public void printNode() {
 		

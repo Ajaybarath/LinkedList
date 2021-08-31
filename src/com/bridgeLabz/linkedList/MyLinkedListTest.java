@@ -91,10 +91,31 @@ public class MyLinkedListTest {
 		myLinkedList.append(node1);
 		myLinkedList.append(node2);
 		myLinkedList.append(node3);
+				
+		myLinkedList.pop();
+				
+		boolean result = myLinkedList.head.equals(node1) && myLinkedList.head.getNext().equals(node2) && myLinkedList.head.getNext().getNext().equals(node3);
+		
+		Assert.assertTrue(result);
+		
+	}
+	
+	@Test
+	public void popLastFromLinkedListTest() {
+		
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+		
+		INode<Integer> node1 = new MyNode<>(56);
+		INode<Integer> node2 = new MyNode<>(30);
+		INode<Integer> node3 = new MyNode<>(70);
+		
+		myLinkedList.append(node1);
+		myLinkedList.append(node2);
+		myLinkedList.append(node3);
 		
 		myLinkedList.printNode();
 		
-		myLinkedList.pop();
+		myLinkedList.popLast();
 		
 		myLinkedList.printNode();
 		
