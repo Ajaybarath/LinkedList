@@ -25,7 +25,7 @@ public class MyLinkedList<K> {
 
 		addInBetweenLinkedList.add(node3);
 		addInBetweenLinkedList.add(node1);
-		addInBetweenLinkedList.addInBetween(node2);
+		addInBetweenLinkedList.addInBetween(node2, node3);
 
 		addLinkedList.printNode();
 
@@ -59,9 +59,21 @@ public class MyLinkedList<K> {
 
 	}
 
-	public void addInBetween(INode<K> newNode) {
-		newNode.setNext(head.getNext());
-		head.setNext(newNode);
+	public void addInBetween(INode<K> newNode, INode<K> prevNode) {
+		
+		INode<K> tempNode = head;
+
+		while (tempNode != null) {
+			
+			if (tempNode.getKey().equals(prevNode.getKey())) {
+				INode nextNode = tempNode.getNext();
+				newNode.setNext(nextNode);
+				tempNode.setNext(newNode);				
+			}
+			
+			tempNode = tempNode.getNext();
+		}
+		
 	}
 
 	public void pop() {

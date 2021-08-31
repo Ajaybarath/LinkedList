@@ -60,7 +60,7 @@ public class MyLinkedListTest {
 	}
 	
 	@Test
-	public void aaddInBetweenToLinkedListTest() {
+	public void addInBetweenToLinkedListTest() {
 		
 		MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
 		
@@ -71,8 +71,13 @@ public class MyLinkedListTest {
 		myLinkedList.append(node1);
 		myLinkedList.append(node3);
 		
-		myLinkedList.addInBetween(node2);
-				
+		myLinkedList.printNode();
+
+		
+		myLinkedList.addInBetween(node2, node1);
+		
+		myLinkedList.printNode();
+						
 		boolean result = myLinkedList.head.equals(node1) && myLinkedList.head.getNext().equals(node2) && myLinkedList.head.getNext().getNext().equals(node3);
 		
 		Assert.assertTrue(result);
@@ -134,11 +139,31 @@ public class MyLinkedListTest {
 		myLinkedList.append(node1);
 		myLinkedList.append(node2);
 		myLinkedList.append(node3);
-		
-		myLinkedList.printNode();
-				
+						
 		boolean result = myLinkedList.findNode(node2);
 
+		Assert.assertTrue(result);
+		
+	}
+	
+	@Test
+	public void addAfterToLinkedListTest() {
+		
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+		
+		INode<Integer> node1 = new MyNode<>(56);
+		INode<Integer> node2 = new MyNode<>(30);
+		INode<Integer> node3 = new MyNode<>(70);
+		INode<Integer> node4 = new MyNode<>(40);
+
+		
+		myLinkedList.append(node1);
+		myLinkedList.append(node2);
+		myLinkedList.append(node3);
+		
+		myLinkedList.addInBetween(node4, node2);
+				
+		boolean result = myLinkedList.head.equals(node1) && myLinkedList.head.getNext().equals(node2) && myLinkedList.head.getNext().getNext().equals(node4);
 		
 		Assert.assertTrue(result);
 		
