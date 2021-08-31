@@ -19,6 +19,24 @@ public class MyLinkedListTest {
 		
 		Assert.assertTrue(result);
 		
+	}
+	
+	@Test
+	public void addToLinkedListTest() {
+		
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+		
+		INode<Integer> node1 = new MyNode<>(56);
+		INode<Integer> node2 = new MyNode<>(30);
+		INode<Integer> node3 = new MyNode<>(70);
+		
+		myLinkedList.add(node3);
+		myLinkedList.add(node2);
+		myLinkedList.add(node1);
+		
+		boolean result = myLinkedList.head.equals(node1) && myLinkedList.head.getNext().equals(node2) && myLinkedList.head.getNext().getNext().equals(node3);
+		
+		Assert.assertTrue(result);
 		
 	}
 }
