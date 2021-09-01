@@ -71,13 +71,8 @@ public class MyLinkedListTest {
 		myLinkedList.append(node1);
 		myLinkedList.append(node3);
 		
-		myLinkedList.printNode();
-
-		
 		myLinkedList.addInBetween(node2, node1);
-		
-		myLinkedList.printNode();
-						
+								
 		boolean result = myLinkedList.head.equals(node1) && myLinkedList.head.getNext().equals(node2) && myLinkedList.head.getNext().getNext().equals(node3);
 		
 		Assert.assertTrue(result);
@@ -186,21 +181,38 @@ public class MyLinkedListTest {
 		myLinkedList.append(node3);
 		
 		myLinkedList.addInBetween(node4, node2);
-		
-		myLinkedList.printNode();
-
-		System.out.println(myLinkedList.size());
-
-		
+				
 		myLinkedList.deleteNode(node4);
-		
-		myLinkedList.printNode();
-		
-		System.out.println(myLinkedList.size());
-		
+						
 		boolean result = myLinkedList.size() == 3;
 						
 		Assert.assertTrue(result);
 		
 	}
+	
+	@Test
+	public void addSortedOrderToLinkedListTest() {
+		
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+		
+		INode<Integer> node1 = new MyNode<>(56);
+		INode<Integer> node2 = new MyNode<>(30);
+		INode<Integer> node3 = new MyNode<>(40);
+		INode<Integer> node4 = new MyNode<>(70);
+
+		
+		myLinkedList.addSortedOrder(node1);
+		myLinkedList.addSortedOrder(node2);
+		myLinkedList.addSortedOrder(node3);
+		myLinkedList.addSortedOrder(node4);
+
+		
+		myLinkedList.printNode();
+		
+		boolean result = myLinkedList.head.equals(node1) && myLinkedList.head.getNext().equals(node2) && myLinkedList.head.getNext().getNext().equals(node3);
+		
+		Assert.assertTrue(result);
+		
+	}
+	
 }

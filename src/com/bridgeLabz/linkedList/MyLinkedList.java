@@ -1,6 +1,6 @@
 package com.bridgeLabz.linkedList;
 
-public class MyLinkedList<K> {
+public class MyLinkedList<K extends Comparable <K>> {
 
 	INode<K> head;
 	INode<K> tail;
@@ -141,6 +141,42 @@ public class MyLinkedList<K> {
 			tempNode.setNext(nextNode);
 		}
 
+	}
+	
+	public void addSortedOrder(INode<K> newNode) {
+		
+		if (head == null) {
+			head = newNode;
+			tail = newNode;
+		}
+		else if(head.getNext() == null) {
+			if (head.getKey().compareTo(newNode.getKey()) > 0) {
+				add(newNode);
+			}
+			else {
+				append(newNode);
+			}
+			
+		}
+		else if (head.getKey().compareTo(newNode.getKey()) > 0) {
+			add(newNode);
+		}
+		else {
+			INode<K> tempNode = head;
+			INode<K> prevNode = head;
+
+			while (tempNode != null) {
+				
+				if (tempNode.getKey().compareTo(newNode.getKey()) > 0) {
+					addInBetween(newNode, tempNode);
+					break;
+				}
+				
+				System.out.println(tempNode.getKey());
+				tempNode = tempNode.getNext();
+			}
+		}
+		
 	}
 
 	public void printNode() {
